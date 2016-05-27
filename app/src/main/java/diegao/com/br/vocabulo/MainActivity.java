@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+import android.view.View;
 
 
 public class MainActivity extends Activity implements GestureDetector.OnGestureListener{
@@ -25,10 +26,7 @@ public class MainActivity extends Activity implements GestureDetector.OnGestureL
 
         this.detector = new GestureDetector(this);
 
-        Vocabulo vocabulo = new Vocabulo();
-        vocabulo.setWord("Anacrônico");
-        vocabulo.setDefinition("Divergencia de tempo / Época diferente / Discrepância temporal");
-        vocabulo.setUseExemple("Um smartphone no ano de 1920 é algo completamente anacrônico");
+
 
 
         FragmentManager fm = getFragmentManager();
@@ -95,13 +93,16 @@ public class MainActivity extends Activity implements GestureDetector.OnGestureL
                   .add(R.id.container,new CardBackFragment())
                     .addToBackStack(null)
                     .commit();
-
-
-
             Log.i("INFORMATION ", "###### FLIPOU!!! #####");
-            //Intent intent = new Intent(this,Screen3.class);
-            //intent.putExtra("statuspoint",statuspoint);
-            //startActivity(intent);
+
+        }else if (e2.getX() - e1.getX() > 100 && Math.abs(velocityX) >200) {
+            FragmentManager fm = getFragmentManager();
+
+            fm.beginTransaction().setCustomAnimations(android.R.animator.fade_in,android.R.animator.fade_out)
+                    .add(R.id.container,new CardFrontFragment())
+                    .addToBackStack(null)
+                    .commit();
+
         }
         return false;
     }
