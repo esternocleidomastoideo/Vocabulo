@@ -25,16 +25,6 @@ public class MainActivity extends Activity implements GestureDetector.OnGestureL
 
 
         this.detector = new GestureDetector(this);
-
-
-
-
-        FragmentManager fm = getFragmentManager();
-        fm.beginTransaction().add(R.id.container,new CardFrontFragment()).commit();
-
-
-
-
     }
 
     @Override
@@ -84,22 +74,24 @@ public class MainActivity extends Activity implements GestureDetector.OnGestureL
             return false;
         }
 
+        //right to left
         if(e1.getX()-e2.getX()>100 && Math.abs(velocityX)>200){
 
 
             FragmentManager fm = getFragmentManager();
 
-            fm.beginTransaction().setCustomAnimations(android.R.animator.fade_in,android.R.animator.fade_out)
-                  .add(R.id.container,new CardBackFragment())
+            fm.beginTransaction().setCustomAnimations(R.animator.card_flip_right_in,R.animator.card_flip_right_out,R.animator.card_flip_left_in,R.animator.card_flip_left_out)
+                    .replace(R.id.container,new CardBackFragment())
                     .addToBackStack(null)
                     .commit();
-            Log.i("INFORMATION ", "###### FLIPOU!!! #####");
 
+             //left to right
         }else if (e2.getX() - e1.getX() > 100 && Math.abs(velocityX) >200) {
-            FragmentManager fm = getFragmentManager();
 
-            fm.beginTransaction().setCustomAnimations(android.R.animator.fade_in,android.R.animator.fade_out)
-                    .add(R.id.container,new CardFrontFragment())
+            FragmentManager fm = getFragmentManager();
+            fm.beginTransaction().setCustomAnimations(R.animator.card_flip_left_in,R.animator.card_flip_left_out,R.animator.card_flip_right_in,R.animator.card_flip_right_out)
+
+                    .replace(R.id.container,new CardFrontFragment())
                     .addToBackStack(null)
                     .commit();
 
