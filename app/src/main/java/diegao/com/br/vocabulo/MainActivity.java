@@ -1,24 +1,12 @@
 package diegao.com.br.vocabulo;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.app.FragmentManager;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.IdRes;
-import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.GestureDetector;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
-import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.ViewGroup;
 
-import java.io.FileDescriptor;
-import java.io.PrintWriter;
-import java.util.List;
 
 public class MainActivity extends Activity implements GestureDetector.OnGestureListener{
 
@@ -27,6 +15,9 @@ public class MainActivity extends Activity implements GestureDetector.OnGestureL
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
+
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -75,6 +66,7 @@ public class MainActivity extends Activity implements GestureDetector.OnGestureL
     }
 
 
+
     @Override
     public boolean onTouchEvent(MotionEvent event){
 
@@ -98,7 +90,13 @@ public class MainActivity extends Activity implements GestureDetector.OnGestureL
 
 
             FragmentManager fm = getFragmentManager();
-            fm.beginTransaction().add(R.id.container,new CardBackFragment()).commit();
+
+            fm.beginTransaction().setCustomAnimations(android.R.animator.fade_in,android.R.animator.fade_out)
+                  .add(R.id.container,new CardBackFragment())
+                    .addToBackStack(null)
+                    .commit();
+
+
 
             Log.i("INFORMATION ", "###### FLIPOU!!! #####");
             //Intent intent = new Intent(this,Screen3.class);
