@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?><RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#a6c"
+    android:padding="16dp"
+    android:weightSum="1"
+    android:gravity="center_vertical">
+
+    <TextView android:id="@+id/txtWord"
+        style="?android:textAppearanceLarge"
+        android:textStyle="bold"
+        android:textColor="#fff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Exemplo de Uso"
+        android:layout_gravity="top"
+        android:gravity="center_vertical|center_horizontal"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView style="?android:textAppearanceSmall"
+        android:id="@+id/txtDefinition"
+        android:textAllCaps="true"
+        android:textColor="#80ffffff"
+        android:textStyle="bold"
+        android:lineSpacingMultiplier="1.2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="FrontCard"
+        android:layout_gravity="top"
+        android:gravity="center_horizontal"
+        android:layout_below="@+id/txtWord"
+        android:layout_alignParentEnd="true" />
+</RelativeLayout>
